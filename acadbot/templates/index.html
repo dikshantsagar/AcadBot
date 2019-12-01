@@ -1,0 +1,54 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AcadBot</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel="stylesheet" href="{% static "/style.css" %}">
+</head>
+<body class="bg-light">
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <a class="navbar-link"><h3 class="header"> AcadBot </i><i class="fas fa-robot" style="color: chocolate;"></i></h3></a>
+    </nav>
+    <div class="container2">
+
+        <h3 class="text-dark">Enter a Query </h3>
+    </div>
+    <div class="card bg-dark container">
+        <h4></h4>
+        <div class="card-body chat" id='chbox'>
+                <div class="chatboxr"> <h3 class="fas fa-robot" style="color: chocolate;"></h3> &nbsp; Hey There ! Ask your Academic Doubts Away ... </div>
+                {% if out %}
+                    <div class="chatboxu"> </h3>{{inp}}&nbsp;&nbsp; <h3 class="fas fa-user" style="color: chocolate;"></div>
+                    <div class="chatboxr"> <h3 class="fas fa-robot" style="color: chocolate;"></h3> &nbsp; {{out}} </div>
+                {% endif %}
+
+        </div>
+        <div class="card-footer">
+            
+            <form class="form-inline" method="POST" action={% url 'script' %}>
+                {% csrf_token %}
+                <input type="text" class="form-control" id='query' style="width: 69vw;" name='query'> &nbsp;&nbsp;&nbsp;
+                <button class="btn" style="background-color: chocolate;" id="ask">Ask</button>
+            </form>
+        </div>
+        
+    </div>
+   
+    <footer>
+        <div class="footer">
+            <button class="btn btn-outline-dark">Made with <i class="fas fa-bolt"></i> by Dikshant Sagar</button>
+        </div>
+    </footer>
+
+    <script src="{% static "/script.js" %}"></script>
+</body>
+</html>
